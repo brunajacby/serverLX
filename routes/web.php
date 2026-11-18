@@ -17,7 +17,7 @@ Route::get('/hello/{message}', function ($message) {
 });
 
 // Rota de homepage
-Route::get('/homepage', [UtilController::class, 'loadHomepage'])->name('home');
+Route::get('/home', [UtilController::class, 'loadHomepage'])->name('home');
 
 // Rota de users
 Route::get('/users', [UserController::class, 'allUsers'])->name('users.all');
@@ -29,8 +29,8 @@ Route::get('/users/add', [UserController::class, 'addUser'])->name('users.add');
 Route::post('/store-users', [UserController::class, 'storeUser'])->name('users.store');
 
 //rota para ver /editar users
-Route::get('/edit-users/{id}',[UserController::class, 'editUsers'] )->name('users.edit');
-
+Route::get('/edit-users/{id}',[UserController::class, 'editUsers'] )->name('users.edit')->middleware('auth');
+ 
 //rota de actualizar users
 Route::put('/update-user', [UserController::class, 'updateUser'])->name('users.update');
 

@@ -13,6 +13,10 @@
     <h6>O contacto é o {{$contactInfo['name']}} - {{$contactInfo['contact']}}</h6>
     <h5>{{$cesaeInfo['name']}} - {{$cesaeInfo['address']}} - {{$cesaeInfo['email']}}</h5>
 
+        @auth
+        <h6>Olá {{Auth::user()->name}}</h6>
+        @endauth
+
     <h1>Funcionalidades da nossa app</h1>
 
     <ul>

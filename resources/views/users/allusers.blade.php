@@ -11,8 +11,17 @@
     </ul>
 
     @if (session('message'))
-    <div class="alert alert-success">{{ session('message') }}</div>
+    <div class="alert alert-success">
+        {{ session('message') }}
+
+    </div>
 @endif
+
+    <form action="">
+    <input type="text" name="search">
+    <button class="btn btn-secondary" type="submit">Procurar</button>
+    </form>
+
 
     <h6>Utilizadores da base de dados</h6>
     <table class="table">
@@ -36,7 +45,14 @@
                     <td>{{$user->address}}</td>
                     <td>{{$user->nif}}</td>
                     <td><a href="{{route('users.delete', $user->id )}}" class="btn btn-danger">Apagar</a></td>
-                    <td><a href="{{route('users.edit', $user->id )}}" class="btn btn-info">Ver /  Editar</a></td>
+
+                    <td>
+                    @auth
+                    <a href="{{route('users.edit', $user->id )}}" class="btn btn-info">Ver /  Editar</a>
+                    @endauth
+                    </td>
+
+
  
                 </tr>
             @endforeach
